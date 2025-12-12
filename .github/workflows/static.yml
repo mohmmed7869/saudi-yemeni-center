@@ -2,7 +2,8 @@ name: Deploy docs folder to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -10,29 +11,21 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload docs as artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload docs folder as artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          path: './docs'
+          path: docs
 
       - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
         id: deployment
-        uses: actions/deploy-pages@v4
