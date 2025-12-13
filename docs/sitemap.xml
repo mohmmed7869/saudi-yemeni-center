@@ -9,8 +9,8 @@
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://saudi-yemeni-center.lovable.app/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://saudi-yemeni-center.lovable.app/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://github.com/mohmmed7869/saudi-yemeni-center/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://github.com/mohmmed7869/saudi-yemeni-center/" />
   </url>
   
   <!-- About Us Page -->
@@ -19,13 +19,13 @@
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://saudi-yemeni-center.lovable.app/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://saudi-yemeni-center.lovable.app/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://github.com/mohmmed7869/saudi-yemeni-center" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://github.com/mohmmed7869/saudi-yemeni-center" />
   </url>
   
   <!-- Services Section -->
   <url>
-    <loc>https://saudi-yemeni-center.lovable.app/#services</loc>
+    <loc>https://github.com/mohmmed7869/saudi-yemeni-center/#services</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -33,7 +33,7 @@
   
   <!-- Gallery Section -->
   <url>
-    <loc>https://saudi-yemeni-center.lovable.app/#gallery</loc>
+    <loc>https://github.com/mohmmed7869/saudi-yemeni-center/#gallery</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -41,7 +41,7 @@
   
   <!-- Branches Section -->
   <url>
-    <loc>https://saudi-yemeni-center.lovable.app/#branches</loc>
+    <loc>https://github.com/mohmmed7869/saudi-yemeni-center/#branches</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -49,7 +49,7 @@
   
   <!-- Contact Section -->
   <url>
-    <loc>https://saudi-yemeni-center.lovable.app/#contact</loc>
+    <loc>https://github.com/mohmmed7869/saudi-yemeni-center/#contact</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
