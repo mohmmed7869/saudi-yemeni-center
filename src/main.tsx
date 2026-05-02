@@ -13,12 +13,7 @@ if (import.meta.env.DEV) {
   });
 }
 
-// Preload critical resources
-if (import.meta.env.PROD) {
-  // Preload hero image
-  const heroImg = new Image();
-  heroImg.src = '/src/assets/hero-bg.jpg';
-}
+// Preload critical resources is handled by Vite during build
 
 // Register service worker for offline functionality and caching
 if (import.meta.env.PROD) {
