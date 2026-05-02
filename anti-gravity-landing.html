@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-gravity | Premium Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        linen: '#F5F5F7',
+                        charcoal: '#1D1D1F',
+                        amber: '#D97706',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .organic-shadow {
+            box-shadow: 0 20px 50px rgba(29, 29, 31, 0.05), 
+                        0 10px 20px rgba(29, 29, 31, 0.02);
+        }
+        .organic-shadow-hover:hover {
+            box-shadow: 0 40px 80px rgba(29, 29, 31, 0.1), 
+                        0 15px 30px rgba(29, 29, 31, 0.05);
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="bg-linen text-charcoal font-sans antialiased selection:bg-amber selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-6">
+        <nav class="max-w-6xl mx-auto glass rounded-full px-6 py-3 flex justify-between items-center shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-charcoal rounded-lg flex items-center justify-center">
+                    <span class="text-linen font-black text-xl">A</span>
+                </div>
+                <span class="font-bold tracking-tighter text-xl">Anti-gravity</span>
+            </div>
+            <div class="hidden md:flex gap-8 font-semibold text-sm opacity-60">
+                <a href="#" class="hover:opacity-100 transition-opacity">Product</a>
+                <a href="#" class="hover:opacity-100 transition-opacity">Features</a>
+                <a href="#" class="hover:opacity-100 transition-opacity">Philosophy</a>
+            </div>
+            <button class="bg-charcoal text-linen px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform active:scale-95 shadow-lg">
+                Join Now
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="min-h-screen flex flex-col items-center justify-center pt-20 px-4">
+        <section class="max-w-4xl text-center space-y-8">
+            <div class="inline-block px-4 py-1.5 bg-white/50 backdrop-blur rounded-full text-xs font-bold tracking-widest uppercase opacity-70 border border-white/50 mb-4">
+                Experience Weightlessness
+            </div>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none">
+                Weightless<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-br from-charcoal via-charcoal to-amber/60">Reality.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-charcoal/60 max-w-2xl mx-auto font-medium leading-relaxed">
+                Elevating minimalist design into an intuitive journey. Inspired by Apple’s precision and Airbnb’s warmth.
+            </p>
+            
+            <!-- 3D Floating Object Placeholder -->
+            <div class="relative py-20 flex justify-center items-center">
+                <div class="absolute w-64 h-64 bg-amber/10 blur-[100px] rounded-full"></div>
+                <div class="w-48 h-48 md:w-64 md:h-64 glass rounded-[3rem] organic-shadow float-animation flex items-center justify-center relative z-10 border-white/50">
+                    <svg class="w-20 h-20 text-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.613.297a2 2 0 01-1.684.02l-1.033-.497a6 6 0 00-4.664-.176l-1.84.614a2 2 0 00-1.291 1.545l-.47 2.352a2 2 0 001.961 2.392h15.222a2 2 0 001.961-2.392l-.47-2.352zM12 2v4M12 2a2 2 0 100 4 2 2 0 000-4z" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards -->
+        <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-20 w-full">
+            <!-- Card 1 -->
+            <div class="glass p-10 rounded-[2.5rem] organic-shadow organic-shadow-hover transition-all duration-700 cursor-pointer group">
+                <div class="w-14 h-14 bg-charcoal/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber/10 transition-colors">
+                    <svg class="w-8 h-8 text-charcoal group-hover:text-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Premium Comfort</h3>
+                <p class="text-charcoal/50 font-medium leading-relaxed">Engineered for absolute stillness. Every detail meticulously crafted for your well-being.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass p-10 rounded-[2.5rem] organic-shadow organic-shadow-hover transition-all duration-700 cursor-pointer group border-amber/10">
+                <div class="w-14 h-14 bg-charcoal/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber/10 transition-colors">
+                    <svg class="w-8 h-8 text-charcoal group-hover:text-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Seamless Journey</h3>
+                <p class="text-charcoal/50 font-medium leading-relaxed">Transition effortlessly through layers of intuitive interaction. No friction, just flow.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass p-10 rounded-[2.5rem] organic-shadow organic-shadow-hover transition-all duration-700 cursor-pointer group">
+                <div class="w-14 h-14 bg-charcoal/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber/10 transition-colors">
+                    <svg class="w-8 h-8 text-charcoal group-hover:text-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Unforgettable Moments</h3>
+                <p class="text-charcoal/50 font-medium leading-relaxed">Time slows down. Capture the essence of high-end minimalism in every frame.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-charcoal/5 text-center">
+        <p class="text-sm font-bold opacity-30 tracking-widest uppercase">&copy; 2026 Anti-gravity Design Studio</p>
+    </footer>
+
+</body>
+</html>

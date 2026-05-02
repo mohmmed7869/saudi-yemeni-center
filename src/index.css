@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Anti-gravity Official Palette */
+    --background: 240 10% 97%; /* #F5F5F7 */
+    --foreground: 240 5% 12%;  /* #1D1D1F */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 5% 12%;
+
+    --primary: 240 5% 12%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 38 92% 50%; /* Amber */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 5% 45%;
+
+    --border: 240 5% 90%;
+    --radius: 2.5rem; /* Airbnb-style soft rounded corners */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'Tajawal', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .organic-shadow {
+    box-shadow: 0 20px 50px rgba(29, 29, 31, 0.05), 0 10px 20px rgba(29, 29, 31, 0.02);
+  }
+  
+  .organic-shadow-hover {
+    @apply transition-all duration-700 hover:-translate-y-3;
+    box-shadow: 0 40px 80px rgba(29, 29, 31, 0.1), 0 15px 30px rgba(29, 29, 31, 0.05);
+  }
+
+  .text-weightless {
+    @apply tracking-tighter leading-tight;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
