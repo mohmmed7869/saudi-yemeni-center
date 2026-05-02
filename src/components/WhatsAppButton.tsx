@@ -21,7 +21,7 @@ export const WhatsAppButton = () => {
     <a
       href={whatsappUrl}
       target="_blank" rel="noopener noreferrer"
-      className={`fixed bottom-28 md:bottom-8 left-6 md:left-8 z-50 group transition-all duration-500 ${
+      className={`fixed bottom-20 md:bottom-8 left-6 md:left-8 z-50 group transition-all duration-500 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       aria-label="تواصل عبر واتساب"

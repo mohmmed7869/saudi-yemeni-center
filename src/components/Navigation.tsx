@@ -58,27 +58,27 @@ export const Navigation = () => {
   return (
     <>
       {/* Top Header - For Logo and Language */}
-      <header className="fixed top-4 left-0 right-0 z-50 px-4 pointer-events-none">
-        <nav className="max-w-5xl mx-auto glass rounded-2xl px-5 py-2 flex justify-between items-center organic-shadow pointer-events-auto border border-white/20">
+      <header className="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 px-4 pointer-events-none">
+        <nav className="max-w-6xl mx-auto glass rounded-[2rem] px-6 py-3 flex justify-between items-center organic-shadow pointer-events-auto">
           <div 
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => navigate("/")}
           >
-            <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-md shadow-primary/10">
-              <span className="text-white font-black text-base">A</span>
+            <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg shadow-primary/20">
+              <span className="text-white font-black text-xl">A</span>
             </div>
-            <span className="font-black tracking-tighter text-base md:text-lg text-primary">
+            <span className="font-black tracking-tighter text-lg md:text-2xl text-primary">
               {t("companyName")}
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex gap-6 items-center mr-6">
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex gap-8 items-center mr-8">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-xs font-bold opacity-60 hover:opacity-100 transition-opacity tracking-tight"
+                  className="text-sm font-bold opacity-60 hover:opacity-100 transition-opacity tracking-tight"
                 >
                   {link.label}
                 </button>
@@ -87,18 +87,18 @@ export const Navigation = () => {
             <LanguageSwitcher />
             <a 
               href="tel:0551307790" 
-              className="hidden md:flex items-center gap-2 bg-primary text-white px-4 py-1.5 rounded-xl text-xs font-black hover:bg-primary/90 transition-all shadow-md"
+              className="hidden md:flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-2xl text-sm font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
             >
-              <Phone size={14} />
+              <Phone size={16} />
               {t("callUsNow")}
             </a>
           </div>
         </nav>
       </header>
 
-      {/* Mobile Bottom Navigation - Anti-gravity Style */}
-      <nav className="fixed bottom-0 left-0 right-0 z-[60] md:hidden pb-6 px-4 flex justify-center pointer-events-none">
-        <div className="w-full max-w-md bg-[#1D1D1F]/90 backdrop-blur-2xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-[2.5rem] flex justify-around items-center h-20 px-2 pointer-events-auto">
+      {/* Mobile Bottom Navigation - Compact & Lowered */}
+      <nav className="fixed bottom-0 left-0 right-0 z-[60] md:hidden flex justify-center pointer-events-none">
+        <div className="w-full bg-[#1D1D1F]/95 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.5)] rounded-t-[1.5rem] flex justify-around items-center h-16 px-2 pointer-events-auto">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive = link.isHash ? activeSection === link.href : location.pathname === link.href;
@@ -107,12 +107,12 @@ export const Navigation = () => {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`flex flex-col items-center justify-center flex-1 gap-1 transition-all duration-300 ${isActive ? 'text-accent' : 'text-white/40'}`}
+                className={`flex flex-col items-center justify-center flex-1 gap-0.5 transition-all duration-300 ${isActive ? 'text-accent' : 'text-white/40'}`}
               >
-                <div className={`p-2 rounded-xl transition-all ${isActive ? 'bg-accent/10' : ''}`}>
-                  <Icon size={20} strokeWidth={isActive ? 3 : 2} />
+                <div className={`p-1.5 rounded-lg transition-all ${isActive ? 'bg-accent/10' : ''}`}>
+                  <Icon size={18} strokeWidth={isActive ? 3 : 2} />
                 </div>
-                <span className="text-[9px] font-black uppercase tracking-tighter">
+                <span className="text-[8px] font-black uppercase tracking-tighter">
                   {link.label}
                 </span>
               </button>
@@ -121,9 +121,9 @@ export const Navigation = () => {
           
           <a 
             href="tel:0551307790" 
-            className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center text-primary shadow-lg shadow-accent/30 active:scale-90 transition-transform animate-pulse"
+            className="w-11 h-11 bg-accent rounded-xl flex items-center justify-center text-primary shadow-lg shadow-accent/20 active:scale-90 transition-transform animate-pulse ml-2"
           >
-            <Phone size={24} fill="currentColor" />
+            <Phone size={20} fill="currentColor" />
           </a>
         </div>
       </nav>
