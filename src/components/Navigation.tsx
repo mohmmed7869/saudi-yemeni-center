@@ -58,27 +58,27 @@ export const Navigation = () => {
   return (
     <>
       {/* Top Header - For Logo and Language */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 px-4 pointer-events-none">
-        <nav className="max-w-6xl mx-auto glass rounded-[2rem] px-6 py-3 flex justify-between items-center organic-shadow pointer-events-auto">
+      <header className="fixed top-4 left-0 right-0 z-50 px-4 pointer-events-none">
+        <nav className="max-w-5xl mx-auto glass rounded-2xl px-5 py-2 flex justify-between items-center organic-shadow pointer-events-auto border border-white/20">
           <div 
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2 cursor-pointer group"
             onClick={() => navigate("/")}
           >
-            <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg shadow-primary/20">
-              <span className="text-white font-black text-xl">A</span>
+            <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-md shadow-primary/10">
+              <span className="text-white font-black text-base">A</span>
             </div>
-            <span className="font-black tracking-tighter text-lg md:text-2xl text-primary">
+            <span className="font-black tracking-tighter text-base md:text-lg text-primary">
               {t("companyName")}
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex gap-8 items-center mr-8">
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex gap-6 items-center mr-6">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-sm font-bold opacity-60 hover:opacity-100 transition-opacity tracking-tight"
+                  className="text-xs font-bold opacity-60 hover:opacity-100 transition-opacity tracking-tight"
                 >
                   {link.label}
                 </button>
@@ -87,9 +87,9 @@ export const Navigation = () => {
             <LanguageSwitcher />
             <a 
               href="tel:0551307790" 
-              className="hidden md:flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-2xl text-sm font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
+              className="hidden md:flex items-center gap-2 bg-primary text-white px-4 py-1.5 rounded-xl text-xs font-black hover:bg-primary/90 transition-all shadow-md"
             >
-              <Phone size={16} />
+              <Phone size={14} />
               {t("callUsNow")}
             </a>
           </div>
