@@ -74,7 +74,11 @@ const TruckModel = () => {
 export const Truck3D = () => {
   return (
     <div className="w-full h-full cursor-grab active:cursor-grabbing">
-      <Canvas dpr={[1, 2]}>
+      <Canvas 
+        dpr={typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : [1, 1.5]}
+        gl={{ antialias: true, powerPreference: "high-performance" }}
+        shadows={false}
+      >
         <PerspectiveCamera makeDefault position={[6, 4, 6]} fov={35} />
         <OrbitControls enableZoom={false} />
         

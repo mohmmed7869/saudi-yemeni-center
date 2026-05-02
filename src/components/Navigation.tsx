@@ -85,6 +85,13 @@ export const Navigation = () => {
               ))}
             </div>
             <LanguageSwitcher />
+            <a 
+              href="tel:0551307790" 
+              className="hidden md:flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-2xl text-sm font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
+            >
+              <Phone size={16} />
+              {t("callUsNow")}
+            </a>
           </div>
         </nav>
       </header>
@@ -114,7 +121,7 @@ export const Navigation = () => {
           
           <a 
             href="tel:0551307790" 
-            className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center text-primary shadow-lg shadow-accent/20 active:scale-90 transition-transform"
+            className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center text-primary shadow-lg shadow-accent/30 active:scale-90 transition-transform animate-pulse"
           >
             <Phone size={24} fill="currentColor" />
           </a>

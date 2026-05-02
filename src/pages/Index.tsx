@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { Services } from "@/components/Services";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -13,6 +12,7 @@ import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Lazy load heavy components for better performance (Hero should load immediately)
+const Services = lazy(() => import("@/components/Services").then(m => ({ default: m.Services })));
 const Gallery = lazy(() => import("@/components/Gallery").then(m => ({ default: m.Gallery })));
 const Branches = lazy(() => import("@/components/Branches").then(m => ({ default: m.Branches })));
 const FAQ = lazy(() => import("@/components/FAQ").then(m => ({ default: m.FAQ })));
@@ -48,7 +48,9 @@ const Index = () => {
       <main>
         <Hero />
         
-        <Services />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Services />
+        </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
           <Gallery />
