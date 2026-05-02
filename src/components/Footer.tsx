@@ -31,12 +31,12 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-8 text-accent uppercase tracking-widest">{t("home")}</h4>
+            <h4 className="text-lg font-bold mb-8 text-accent uppercase tracking-widest">{t("quickLinks")}</h4>
             <ul className="space-y-4 text-white/60 font-medium">
               <li><a href="/" className="hover:text-accent transition-colors">{t("home")}</a></li>
               <li><a href="/about" className="hover:text-accent transition-colors">{t("aboutUs")}</a></li>
-              <li><a href="#services" className="hover:text-accent transition-colors">{t("services")}</a></li>
-              <li><a href="#branches" className="hover:text-accent transition-colors">{t("branches")}</a></li>
+              <li><a href="#faq" className="hover:text-accent transition-colors">{t("faqTitle")}</a></li>
+              <li><a href="#contact" className="hover:text-accent transition-colors">{t("contactTitle")}</a></li>
             </ul>
           </div>
 

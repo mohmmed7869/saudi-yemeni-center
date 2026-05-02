@@ -30,19 +30,10 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl font-black tracking-[-0.05em] leading-none text-primary mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
+          className="text-6xl md:text-8xl font-black tracking-[-0.05em] leading-none text-primary mb-12 drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
         >
           {t("companyName")}
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-lg md:text-2xl font-medium text-primary/60 mb-10 italic tracking-wide"
-        >
-          {t("underSupervision")}
-        </motion.p>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
