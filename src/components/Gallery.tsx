@@ -216,26 +216,32 @@ export const Gallery = () => {
               </button>
 
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                key={selectedImage}
+                initial={{ scale: 0.95, opacity: 0, filter: "brightness(2) blur(10px)" }}
+                animate={{ scale: 1, opacity: 1, filter: "brightness(1) blur(0px)" }}
+                exit={{ scale: 0.95, opacity: 0, filter: "brightness(0.5) blur(5px)" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="max-w-5xl w-full"
                 onClick={(e) => e.stopPropagation()}
               >
                 <OptimizedImage
                   src={galleryImages.find((img) => img.id === selectedImage)?.image || ''}
                   alt={t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
-                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  className="w-full h-auto rounded-2xl shadow-[0_0_50px_rgba(255,255,255,0.2)]"
                 />
-                <div className="text-center mt-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                <motion.div 
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                  className="text-center mt-6"
+                >
+                  <h3 className="text-2xl font-bold text-white mb-2">
                     {t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
                   </h3>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-lg text-white/80">
                     {t(galleryImages.find((img) => img.id === selectedImage)?.descriptionKey || '')}
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
