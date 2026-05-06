@@ -23,11 +23,6 @@ export const Services = () => {
       description: t("pistonDesc"),
     },
     {
-      icon: Settings,
-      title: t("latheService"),
-      description: t("latheDesc"),
-    },
-    {
       icon: Sparkles,
       title: t("oilSystem"),
       description: t("oilSystemDesc"),
@@ -57,7 +52,7 @@ export const Services = () => {
           <div className="h-1.5 w-24 bg-accent mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-6 md:gap-10 scrollbar-hide">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -67,6 +62,7 @@ export const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center shrink-0"
               >
                 <Card className="group glass p-12 rounded-[3rem] organic-shadow organic-shadow-hover cursor-pointer border-none h-full flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-primary/5 rounded-[1.5rem] flex items-center justify-center mb-8 group-hover:bg-accent/10 transition-colors duration-500">

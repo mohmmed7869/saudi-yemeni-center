@@ -88,7 +88,7 @@ export const Gallery = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 -mx-4 px-4 md:mx-auto md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl scrollbar-hide">
           {galleryImages.map((item, index) => (
             <motion.div
               key={item.id}
@@ -105,7 +105,7 @@ export const Gallery = () => {
                 transition: { duration: 0.3 }
               }}
               onClick={() => setSelectedImage(item.id)}
-              className="cursor-pointer"
+              className="cursor-pointer min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center shrink-0"
             >
               <Card
                 className="group relative overflow-hidden border-2 border-border hover:border-accent/50 transition-all duration-500"
