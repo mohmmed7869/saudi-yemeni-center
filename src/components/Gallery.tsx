@@ -6,6 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { OptimizedImage } from "./OptimizedImage";
 import { SectionDivider } from "./SectionDivider";
 import { ParallaxBackground } from "./ParallaxBackground";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 // استيراد صور المعرض الحقيقية للشاحنات
 import truckAcRepairImg from "@/assets/gallery/truck-ac-repair.jpg";
@@ -62,158 +70,176 @@ export const Gallery = () => {
   return (
     <>
       <SectionDivider icon={Image} variant="primary" />
-      
+
       <section id="gallery" className="relative py-32 bg-muted/30 overflow-hidden">
         <ParallaxBackground speed={0.4}>
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         </ParallaxBackground>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
-        >
-          <div className="inline-block px-6 py-2 mb-6 rounded-full bg-primary/5 border border-primary/10">
-            <span className="text-primary font-black text-sm uppercase tracking-widest">{t('galleryTitle')}</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 leading-tight">
-            {t('ourWorkSpeaks')}
-          </h2>
-          <div className="h-1.5 w-24 bg-primary/20 mx-auto mb-6 rounded-full" />
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            {t('galleryDescription')}
-          </p>
-        </motion.div>
 
-        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 -mx-4 px-4 md:mx-auto md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl scrollbar-hide">
-          {galleryImages.map((item, index) => (
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-20"
+          >
+            <div className="inline-block px-6 py-2 mb-6 rounded-full bg-primary/5 border border-primary/10">
+              <span className="text-primary font-black text-sm uppercase tracking-widest">{t('galleryTitle')}</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 leading-tight">
+              {t('ourWorkSpeaks')}
+            </h2>
+            <div className="h-1.5 w-24 bg-primary/20 mx-auto mb-6 rounded-full" />
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              {t('galleryDescription')}
+            </p>
+          </motion.div>
+
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 3500,
+              }),
+            ]}
+            className="w-full max-w-7xl mx-auto"
+          >
+            <CarouselContent className="-ml-4 md:-ml-8">
+              {galleryImages.map((item, index) => (
+                <CarouselItem key={item.id} className="pl-4 md:pl-8 md:basis-1/2 lg:basis-1/3">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.1,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    whileHover={{
+                      scale: 1.03,
+                      transition: { duration: 0.3 }
+                    }}
+                    onClick={() => setSelectedImage(item.id)}
+                    className="cursor-pointer h-full"
+                  >
+                    <Card
+                      className="group relative overflow-hidden border-2 border-border hover:border-accent/50 transition-all duration-500 h-full"
+                    >
+                      {/* Image Container */}
+                      <div className="relative aspect-[4/3] overflow-hidden bg-muted h-full">
+                        <OptimizedImage
+                          src={item.image}
+                          alt={t(item.titleKey)}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        />
+
+                        {/* High-Contrast Centered Overlay */}
+                        <div className="absolute inset-0 bg-primary/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-8 text-center cursor-pointer">
+                          <ZoomIn className="w-12 h-12 text-white/50 mb-6" />
+                          <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
+                            {t(item.titleKey)}
+                          </h3>
+                          <div className="h-1 w-12 bg-white/20 mb-4 rounded-full" />
+                          <p className="text-lg text-white/80 font-medium">
+                            {t(item.descriptionKey)}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-6 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-full border-2 border-accent text-primary bg-background hover:bg-accent hover:text-white hover:scale-110 shadow-lg shadow-accent/20 transition-all duration-300" />
+              <CarouselNext className="static translate-y-0 h-14 w-14 rounded-full border-2 border-accent text-primary bg-background hover:bg-accent hover:text-white hover:scale-110 shadow-lg shadow-accent/20 transition-all duration-300" />
+            </div>
+          </Carousel>
+        </div>
+
+        {/* Lightbox Modal */}
+        <AnimatePresence>
+          {selectedImage !== null && (
             <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              whileHover={{ 
-                scale: 1.03,
-                transition: { duration: 0.3 }
-              }}
-              onClick={() => setSelectedImage(item.id)}
-              className="cursor-pointer min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center shrink-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-50 bg-background/95 backdrop-blur-lg flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
             >
-              <Card
-                className="group relative overflow-hidden border-2 border-border hover:border-accent/50 transition-all duration-500"
+              {/* Close Button */}
+              <motion.button
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0, rotate: 180 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-6 left-6 w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:scale-110 transition-transform z-10"
+                aria-label="إغلاق"
               >
-              {/* Image Container */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                <X className="w-6 h-6" />
+              </motion.button>
+
+              {/* Previous Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = galleryImages.findIndex(img => img.id === selectedImage);
+                  const prevIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
+                  setSelectedImage(galleryImages[prevIndex].id);
+                }}
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-2 border-accent/50 text-foreground flex items-center justify-center hover:scale-110 hover:bg-accent hover:text-accent-foreground transition-all z-10"
+                aria-label="السابق"
+              >
+                ‹
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = galleryImages.findIndex(img => img.id === selectedImage);
+                  const nextIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
+                  setSelectedImage(galleryImages[nextIndex].id);
+                }}
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-2 border-accent/50 text-foreground flex items-center justify-center hover:scale-110 hover:bg-accent hover:text-accent-foreground transition-all z-10"
+                aria-label="التالي"
+              >
+                ›
+              </button>
+
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="max-w-5xl w-full"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <OptimizedImage
-                  src={item.image}
-                  alt={t(item.titleKey)}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  src={galleryImages.find((img) => img.id === selectedImage)?.image || ''}
+                  alt={t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
+                  className="w-full h-auto rounded-2xl shadow-2xl"
                 />
-                
-                {/* High-Contrast Centered Overlay */}
-                <div className="absolute inset-0 bg-primary/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-8 text-center cursor-pointer">
-                  <ZoomIn className="w-12 h-12 text-white/50 mb-6" />
-                  <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
-                    {t(item.titleKey)}
+                <div className="text-center mt-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    {t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
                   </h3>
-                  <div className="h-1 w-12 bg-white/20 mb-4 rounded-full" />
-                  <p className="text-lg text-white/80 font-medium">
-                    {t(item.descriptionKey)}
+                  <p className="text-lg text-muted-foreground">
+                    {t(galleryImages.find((img) => img.id === selectedImage)?.descriptionKey || '')}
                   </p>
                 </div>
-              </div>
-            </Card>
-          </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {selectedImage !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-lg flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            {/* Close Button */}
-            <motion.button
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              exit={{ scale: 0, rotate: 180 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-6 left-6 w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:scale-110 transition-transform z-10"
-              aria-label="إغلاق"
-            >
-              <X className="w-6 h-6" />
-            </motion.button>
-          
-          {/* Previous Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              const currentIndex = galleryImages.findIndex(img => img.id === selectedImage);
-              const prevIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
-              setSelectedImage(galleryImages[prevIndex].id);
-            }}
-            className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-2 border-accent/50 text-foreground flex items-center justify-center hover:scale-110 hover:bg-accent hover:text-accent-foreground transition-all z-10"
-            aria-label="السابق"
-          >
-            ‹
-          </button>
-          
-          {/* Next Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              const currentIndex = galleryImages.findIndex(img => img.id === selectedImage);
-              const nextIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
-              setSelectedImage(galleryImages[nextIndex].id);
-            }}
-            className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-2 border-accent/50 text-foreground flex items-center justify-center hover:scale-110 hover:bg-accent hover:text-accent-foreground transition-all z-10"
-            aria-label="التالي"
-          >
-            ›
-          </button>
-          
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="max-w-5xl w-full" 
-            onClick={(e) => e.stopPropagation()}
-          >
-            <OptimizedImage
-              src={galleryImages.find((img) => img.id === selectedImage)?.image || ''}
-              alt={t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
-            <div className="text-center mt-6">
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                {t(galleryImages.find((img) => img.id === selectedImage)?.titleKey || '')}
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                {t(galleryImages.find((img) => img.id === selectedImage)?.descriptionKey || '')}
-              </p>
-            </div>
-          </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
     </>
   );
 };
