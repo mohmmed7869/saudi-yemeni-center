@@ -64,6 +64,7 @@ export const Services = () => {
           opts={{
             align: "start",
             loop: true,
+            direction: "rtl",
           }}
           plugins={[
             Autoplay({

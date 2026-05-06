@@ -100,6 +100,7 @@ export const Gallery = () => {
             opts={{
               align: "start",
               loop: true,
+              direction: "rtl",
             }}
             plugins={[
               Autoplay({
